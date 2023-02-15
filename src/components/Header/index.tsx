@@ -7,7 +7,7 @@ import { debounce } from 'lodash-es'
 const Header: React.FC = () => {
   const navItem = [{
     name: '首页',
-    link: '/home'
+    link: '/'
   }, {
     name: '归档',
     link: '/category'

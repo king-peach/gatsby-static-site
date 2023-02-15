@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, HeadFC, PageProps } from "gatsby"
 import Layout from "../components/Layout"
-import Banner from "../components/Banner"
+import { Link } from "gatsby"
 
 export const query = graphql`
   query allStrapiArticle {
@@ -10,7 +10,9 @@ export const query = graphql`
         title
         slug
         keywords
-        descrition
+        id
+        updatedAt
+        author
       }
       pageInfo {
         totalCount
@@ -68,6 +70,7 @@ type QueryProps = {
 
 const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
   const { title, description } = data.strapiHome
+  const { allStrapiArticle } = data
 
   return (
     <Layout>
@@ -78,6 +81,21 @@ const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
             <p className="text-gray-300 text-lg mt-4">{description}</p>
           </aside>
         </section>
+        <div className="article-list-wrap">
+          <ul className="article-list my-3 w-1/2 m-auto">
+            {
+              allStrapiArticle.nodes.map((article, index) => (
+                <li className="v-article mb-6" key={`home article key ${index}`}>
+                  <Link to={`/article/${article.id}`}>
+                    <div className="u-title font-bold text-purple-700 text-2xl">{article.title}</div>
+                    <div className="u-public-date text-gray-800 text-sm font-medium mt-2">{`${article.author} 发布于 ${new Date(article.updatedAt!).toLocaleString()}`}</div>
+                    <div className="u-slug text-gray-800 text-base font-medium mt-2">{article.slug}</div>
+                  </Link>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </main>
     </Layout>
   )

@@ -18,7 +18,7 @@ module.exports = {
         primary: colors.purple,
       },
       fontFamily: {
-        sans: ['-apple-system', '"PingFang SC"', '"Lantinghei SC"', '"Source Han Sans"', '"Hiragino Sans GB"', '"Microsoft YaHei"', 'SimSun', 'sans-serif', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"']
+        sans: ['100%/1.5 -apple-system', '"PingFang SC"', '"Lantinghei SC"', '"Source Han Sans"', '"Hiragino Sans GB"', '"Microsoft YaHei"', 'SimSun', 'sans-serif', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"']
       }
     },
     container: {

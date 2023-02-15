@@ -41,8 +41,12 @@ const config: GatsbyConfig = {
           {
             singularName: 'article',
             queryParams: {
-              publicationState: process.env.GATSBY_IS_PREVIEW === 'true' ? 'preview' : 'live',
-              populate: 'deep'
+              populate: {
+                tags: '*',
+                title: '*',
+                id: '*',
+                populate: '*'
+              }
             }
           },
           {
@@ -91,7 +95,13 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-transformer-sharp',
-    'gatsby-transformer-remark'
+    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        include: /image\/*\/*.svg$/
+      }
+    }
   ],
 }
 
