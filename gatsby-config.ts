@@ -35,12 +35,13 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.STRAPI_API_URL,
+        apiURL: strapiPrefix,
         accessToken: process.env.STRAPI_TOKEN,
         collectionTypes: [
           {
             singularName: 'article',
             queryParams: {
+              publicationState: 'preview',
               populate: {
                 tags: '*',
                 title: '*',
@@ -57,6 +58,7 @@ const config: GatsbyConfig = {
           {
             singularName: 'home',
             queryParams: {
+              publicationState: 'preview',
               populate: {
                 banner: {
                   populate: {

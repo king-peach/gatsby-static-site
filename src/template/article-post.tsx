@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import Layout from "../components/Layout"
 import LeftIcon from '../images/icon/arrow-left.svg'
 import RightIcon from '../images/icon/arrow-right.svg'
+import Markdown from '../components/Markdown'
 
 export const query = graphql`
   query StrapiArticle($slug: String) {
@@ -56,6 +57,11 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
   return (
     <Layout>
       <main>
+        <link
+          key="markdown-css"
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
+        />
         <section className="banner-wrap h-80 w-full text-white bg-gray-700 relative">
           <div className="banner-inner-box text-left overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg">
             <div className="u-tags-box text-xs">
@@ -67,9 +73,10 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
             <div className="u-summary italic text-green-50 mt-3.5">{slug}</div>
           </div>
         </section>
-        <article className="main-container m-auto w-2/3 my-3" dangerouslySetInnerHTML={{__html: content?.data?.content! }} style={{ minHeight: contentMinH }}>
+        <article className="main-container m-auto w-2/3 my-3" style={{ minHeight: contentMinH }}>
+          <Markdown md={content?.data?.content!} />
         </article>
-        <div className="pagination-wrap m-auto h-14 w-2/3 mt-2 mb-4">
+        <div className="pagination-wrap m-auto h-14 w-2/3 mt-10 mb-4">
           { 
             previous && <div className=" w-max-1/2 previous-box h-14 overflow-hidden">
               <div className="u-top pl-6 text-gray-500" >上一页</div>

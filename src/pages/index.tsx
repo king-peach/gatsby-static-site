@@ -5,14 +5,15 @@ import { Link } from "gatsby"
 
 export const query = graphql`
   query allStrapiArticle {
-    allStrapiArticle {
+    allStrapiArticle (sort: {createdAt: ASC}) {
       nodes {
         title
         slug
         keywords
         id
-        updatedAt
+        updatedAt(formatString: "YYYY-MM-DD HH:mm:ss")
         author
+        createdAt
       }
       pageInfo {
         totalCount
@@ -28,35 +29,6 @@ export const query = graphql`
     }
     strapiHome {
       description
-      banner {
-        title
-        componentName
-        slides {
-          summary
-          title
-          href
-          slug
-          styleCss {
-            btnWrapStyle {
-              marginTop
-            }
-            summaryStyle {
-              color
-              fontSize
-            }
-            titleStyle {
-              color
-              fontSize
-            }
-          }
-          poster {
-            url
-          }
-          animation {
-            url
-          }
-        }
-      }
       title
     }
   }
@@ -88,7 +60,7 @@ const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
                 <li className="v-article mb-6" key={`home article key ${index}`}>
                   <Link to={`/article/${article.id}`}>
                     <div className="u-title font-bold text-purple-700 text-2xl">{article.title}</div>
-                    <div className="u-public-date text-gray-800 text-sm font-medium mt-2">{`${article.author} 发布于 ${new Date(article.updatedAt!).toLocaleString()}`}</div>
+                    <div className="u-public-date text-gray-800 text-sm font-medium mt-2">{`${article.author} 发布于 ${article.updatedAt!}`}</div>
                     <div className="u-slug text-gray-800 text-base font-medium mt-2">{article.slug}</div>
                   </Link>
                 </li>

@@ -2,3 +2,4 @@
 // and wrap your page components in additional global components
 
 import './src/styles/global.css'
+import 'github-markdown-css/github-markdown.css';

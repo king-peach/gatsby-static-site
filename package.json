@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby clean && gatsby develop",
+    "develop": "gatsby develop",
     "start": "gastby clean && gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -38,10 +38,15 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
+    "@types/markdown-navbar": "^1.4.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "github-markdown-css": "^5.2.0",
     "lodash-es": "^4.17.21",
+    "markdown-navbar": "^1.4.3",
+    "react-markdown": "^8.0.7",
+    "remark-gfm": "^3.0.1",
     "typescript": "^4.9.4"
   }
 }
