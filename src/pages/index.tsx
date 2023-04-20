@@ -53,7 +53,7 @@ const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
           <ul className="article-list my-3 m-auto w-4/5 lg:w-1/2">
             {
               allStrapiArticle.nodes.map((article, index) => (
-                <li className="v-article mb-6" key={`home article key ${index}`}>
+                <li className="v-article mb-8" key={`home article key ${index}`}>
                   <Link to={`/article/${article.id}`}>
                     <div className="u-title font-bold text-purple-700 text-2xl">{article.title}</div>
                     <div className="u-public-date text-gray-800 text-sm font-medium mt-2">{`${article.author} 发布于 ${article.updatedAt!}`}</div>

@@ -7,13 +7,13 @@ import 'markdown-navbar/dist/navbar.css'
 import '../styles/markdown.scss'
 import rehypeRaw from 'rehype-raw'
 
-const Markdown: React.FC<{ md: string}> = (prop: { md: string }) => {
+const Markdown: React.FC<{ md: string}> = (props: { md: string, bannerClassName?: string }) => {
   const [tocTop, setTocTop] = useState('20rem')
 
   useEffect(() => {
     const handleTocListScroll = () => {
       const scrollY = window.scrollY
-      const bannerH = +(document.querySelector('.banner-wrap')?.clientHeight!)
+      const bannerH = +(document.querySelector(`.${props?.bannerClassName || 'm-common-banner-wrap'}`)?.clientHeight!)
       const navH = +(document.querySelector('header')?.clientHeight!)
       const top = bannerH - scrollY
       setTocTop(`${top > navH ? top : navH }px`)
@@ -28,13 +28,13 @@ const Markdown: React.FC<{ md: string}> = (prop: { md: string }) => {
 
   return (
     <div className="markdown-wrap md:flex">
-      <div className="markdown-body">
-        <ReactMarkdown children={prop.md} remarkPlugins={[RemarkGfm]} rehypePlugins={[rehypeRaw]} />
+      <div className="markdown-body w-full">
+        <ReactMarkdown children={props.md} remarkPlugins={[RemarkGfm]} rehypePlugins={[rehypeRaw]} />
       </div>
       <div className="markdown-navbar fixed right-4 top-80 hidden xl:block" style={{ top: tocTop }}>
         <MarkNav
           className="toc-list"
-          source={prop.md}
+          source={props.md}
           ordered={true}
         />
       </div>

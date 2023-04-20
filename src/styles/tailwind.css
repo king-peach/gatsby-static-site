@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-gray-900 {
+  color: #111827;
+}
+
+.bg-gray-900 {
+  background:#111827;
+}
+
+.bg-purple-900 {
+  background: #4C1D95;
+}
+
+.text-purple-900 {
+  color: #4C1D95;
+}
+
+.text-green-600 {
+  color: #059669;
+}
+
+.bg-green-600 {
+  background: #059669;
+}
+
+.text-blue-400 {
+  color: #60A5FA;
+}
+
+.bg-blue-400 {
+  background: #60A5FA;
+}
+
+.text-pink-600 {
+  color: #DB2777;
+}
+
+.bg-pink-600 {
+  background: #DB2777;
+}

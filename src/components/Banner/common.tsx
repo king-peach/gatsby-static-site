@@ -12,10 +12,10 @@ const Banner: React.FC<BannerIntro> = (props) => {
   return (
     <section className="m-common-banner-wrap text-center relative w-full overflow-hidden">
       <aside className={`bg-${colorClassName} pt-20`}>
-        <h2 className="text-white font-bold text-6xl">{title}</h2>
-        <p className="text-gray-300 text-lg mt-4">{summary}</p>
+        <h2 className="text-white font-bold text-2xl lg:text-5xl max-w-screen-md leading-snug m-auto">{title}</h2>
+        <p className="text-gray-200 text-lg mt-4">{summary}</p>
       </aside>
-      <WaveToBottom className={`w-full text-${colorClassName}`} />
+      <WaveToBottom className={`w-full -mt-px text-${colorClassName}`} />
     </section>
   )
 }
