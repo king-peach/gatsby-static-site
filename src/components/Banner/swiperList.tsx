@@ -25,7 +25,7 @@ export interface BannerProps {
   className?: string;
 }
 
-const Banner: React.FC<BannerProps> = (props) => {
+const SwiperListBanner: React.FC<BannerProps> = (props) => {
   const [show, setShow] = useState(false)
   let swiperInstance: any
 
@@ -109,4 +109,4 @@ const Banner: React.FC<BannerProps> = (props) => {
   )
 }
 
-export default Banner
+export default SwiperListBanner

@@ -1,8 +1,6 @@
-import { graphql, Link, PageProps } from "gatsby"
-import React from "react"
-import { useState } from "react"
-import { useEffect } from "react"
-import Layout from "../components/Layout"
+import { graphql, Link, HeadFC, PageProps } from 'gatsby'
+import React, { useState, useEffect } from 'react'
+import Layout from '../components/Layout'
 import LeftIcon from '../images/icon/arrow-left.svg'
 import RightIcon from '../images/icon/arrow-right.svg'
 import Markdown from '../components/Markdown'
@@ -57,11 +55,6 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
   return (
     <Layout>
       <main>
-        <link
-          key="markdown-css"
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
-        />
         <section className="banner-wrap h-80 w-full text-white bg-gray-700 relative">
           <div className="banner-inner-box text-left overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg">
             <div className="u-tags-box text-xs">
@@ -78,7 +71,7 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
         </article>
         <div className="pagination-wrap m-auto h-14 w-2/3 mt-10 mb-4">
           { 
-            previous && <div className=" w-max-1/2 previous-box h-14 overflow-hidden">
+            previous && <div className=" w-max-1/2 previous-box h-14 overflow-hidden float-left">
               <div className="u-top pl-6 text-gray-500" >上一页</div>
               <Link to={`/article/${previous?.id}`} className="u-bottom mt-2 float-left block font-bold text-purple-700 whitespace-nowrap">
                 <LeftIcon className=" w-5 mr-1 align-middle fill-purple-700 inline-block" />
@@ -87,7 +80,7 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
             </div>
           }
           {
-            next && <div className="float-right w-max-1/2 next-box h-14 overflow-hidden">
+            next && <div className="float-right w-max-1/2 next-box h-14 overflow-hidden float-right">
               <div className="u-top pr-6 text-gray-500">
                 <span className="float-right">下一页</span>
               </div>
@@ -104,3 +97,5 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
 }
 
 export default AriclePage
+
+export const Head: HeadFC = () => <title>article detail</title>

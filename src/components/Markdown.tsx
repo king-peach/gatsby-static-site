@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import 'github-markdown-css/github-markdown.css'
 import ReactMarkdown from 'react-markdown'
 import RemarkGfm from 'remark-gfm' // fixed react-markdown can't render table、footer、strikethrough……
 import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
-import '../styles/markdown.css'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import '../styles/markdown.scss'
+import rehypeRaw from 'rehype-raw'
 
 const Markdown: React.FC<{ md: string}> = (prop: { md: string }) => {
   const [tocTop, setTocTop] = useState('20rem')
@@ -28,11 +27,11 @@ const Markdown: React.FC<{ md: string}> = (prop: { md: string }) => {
   }, [])
 
   return (
-    <div className="markdown-wrap flex">
+    <div className="markdown-wrap md:flex">
       <div className="markdown-body">
-        <ReactMarkdown remarkPlugins={[RemarkGfm]}>{prop.md}</ReactMarkdown>
+        <ReactMarkdown children={prop.md} remarkPlugins={[RemarkGfm]} rehypePlugins={[rehypeRaw]} />
       </div>
-      <div className="markdown-navbar bg-white fixed right-2 top-80" style={{ top: tocTop }}>
+      <div className="markdown-navbar fixed right-4 top-80 hidden xl:block" style={{ top: tocTop }}>
         <MarkNav
           className="toc-list"
           source={prop.md}

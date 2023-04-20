@@ -73,6 +73,13 @@ const config: GatsbyConfig = {
                 componentName: '*'
               }
             }
+          },
+          {
+            singularName: 'personal',
+            queryParams: {
+              publicationState: 'preview',
+              populate: '*'
+            }
           }
         ]
       }
@@ -96,6 +103,7 @@ const config: GatsbyConfig = {
         },
       },
     },
+    'gatsby-plugin-sass',
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     {

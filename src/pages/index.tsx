@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, HeadFC, PageProps } from "gatsby"
 import Layout from "../components/Layout"
 import { Link } from "gatsby"
+import Banner from "../components/Banner/common"
 
 export const query = graphql`
   query allStrapiArticle {
@@ -47,14 +48,9 @@ const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
   return (
     <Layout>
       <main className="v-main-container min-h-screen">
-        <section className="bg-purple-900 text-center relative w-full py-40 overflow-hidden">
-          <aside>
-            <h2 className="text-white font-bold text-6xl">{title}</h2>
-            <p className="text-gray-300 text-lg mt-4">{description}</p>
-          </aside>
-        </section>
+        <Banner title={title!} summary={description!} />
         <div className="article-list-wrap">
-          <ul className="article-list my-3 w-1/2 m-auto">
+          <ul className="article-list my-3 m-auto w-4/5 lg:w-1/2">
             {
               allStrapiArticle.nodes.map((article, index) => (
                 <li className="v-article mb-6" key={`home article key ${index}`}>

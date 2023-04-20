@@ -1,10 +1,17 @@
 import React from 'react'
 import { Link } from 'gatsby-link'
+import WaveToTop from '../../images/icon/wave-to-top.svg'
 
-const Footer: React.FC = () => {
+type FooterProp = {
+  colorClassName?: string;
+}
+
+const Footer: React.FC<FooterProp> = (props) => {
+  const { colorClassName = 'purple-900' } = props
   return (
-    <footer className="v-footer py-6 bg-black text-white">
-      <div className="copyright text-center">
+    <footer className="v-footer text-white">
+      <WaveToTop className={`text-${colorClassName} w-full`} />
+      <div className={`copyright pb-6 text-center bg-${colorClassName} -mt-px`}>
         <div className="whitespace-nowrap m-auto md:inline-block">
           <p className="inline-block">Copyright&copy; linxianglive.cn</p>
           <span>｜</span>

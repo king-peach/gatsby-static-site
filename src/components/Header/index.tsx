@@ -38,9 +38,9 @@ const Header: React.FC = () => {
 
   return (
     <header className={`flex items-center ${fixed ? 'md:text-gray-800 md:bg-white md:bg-opacity-80 md:shadow-sm md:shadow-gray-400 md:fixed' : 'absolute text-white bg-transparent'} justify-between px-4 inset-0 h-16 bg-transparent z-9999`}>
-      <div className="u-logo inline-block">
+      <Link  to="/" className="u-logo inline-block">
         <h2 className="inline-block font-bold">WangTao</h2>
-      </div>
+      </Link>
       <div className="v-navbar-wrap hidden float-right md:inline-block">
         {
           navItem.map(item => (
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
           <MenuList>
             {
             navItem.map(item => (
-              <MenuItem key={item.name} className=" border-t border-gray-500 block px-10 py-2 text-gray-800 font-normal from-neutral-500">
+              <MenuItem key={item.name} className=" border-t bg-white border-gray-500 border-top-none block px-10 py-2 text-gray-800 font-normal from-neutral-500">
                 <Link target="_blank" to={item.link}>{item.name}</Link>
               </MenuItem>))
             }

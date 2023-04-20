@@ -30,7 +30,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql,
 
   const posts = data?.allStrapiArticle.nodes!
 
-  const articleTemp = path.resolve('./src/template/article-post.tsx')
+  const articleTemp = path.resolve('./src/templates/article-post.tsx')
 
   posts.forEach((post, index: number) => {
     const previous = index === (posts.length - 1) ? null : posts[index + 1]
@@ -49,39 +49,39 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions, graphql,
   })
 }
 
-// export const onCreatePage: GatsbyNode['onCreatePage'] = ({ page, actions: { createPage, deletePage } }) => {
-//   // remove route trailing salashes
-//   const pagesMetadata = Object.values(pages)
-//     .map<[string, string]>(({ pathName, image }) => [pathName && slashify(pathName) || '', image || ''])
-//     .filter(([pathName, image]) => pathName && image)
+export const onCreatePage: GatsbyNode['onCreatePage'] = ({ page, actions: { createPage, deletePage } }) => {
+  // remove route trailing salashes
+  const pagesMetadata = Object.values(pages)
+    .map<[string, string]>(({ pathName, image }) => [pathName && slashify(pathName) || '', image || ''])
+    .filter(([pathName, image]) => pathName && image)
 
-//   pagesMetadata.forEach(([pathName, image]) => {
-//     if (page.path === pathName) {
-//       deletePage(page)
-//       createPage({
-//         ...page,
-//         context: {
-//           image: path.join(process.cwd(), image),
-//         },
-//       })
-//     }
-//   })
-// }
+  pagesMetadata.forEach(([pathName, image]) => {
+    if (page.path === pathName) {
+      deletePage(page)
+      createPage({
+        ...page,
+        context: {
+          image: path.join(process.cwd(), image),
+        },
+      })
+    }
+  })
+}
 
-// export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ getConfig, actions }) => {
-//   const isStaging = process.env.CI_MODE === 'staging'
-//   if (isStaging) {
-//     const devtool = process.env.DEV_TOOL
-//     if (devtool === 'false') {
-//       actions.setWebpackConfig({
-//         devtool: false
-//       })
-//     }
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ getConfig, actions }) => {
+  const isStaging = process.env.CI_MODE === 'staging'
+  if (isStaging) {
+    const devtool = process.env.DEV_TOOL
+    if (devtool === 'false') {
+      actions.setWebpackConfig({
+        devtool: false
+      })
+    }
 
-//     const config = getConfig()
-//     config.optimization.minimize = true
+    const config = getConfig()
+    config.optimization.minimize = true
 
-//     // This will completely replace the webpack config with the modified object.
-//     actions.replaceWebpackConfig(config)
-//   }
-// }
+    // This will completely replace the webpack config with the modified object.
+    actions.replaceWebpackConfig(config)
+  }
+}

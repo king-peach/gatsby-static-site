@@ -2,7 +2,11 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/pages/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}',
+    './src/templates/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       zIndex: {
@@ -35,6 +39,6 @@ module.exports = {
   plugins: [
     require('postcss-import'),
     require('tailwindcss'),
-    require('autoprefixer'),
+    require('autoprefixer')
   ],
 }
