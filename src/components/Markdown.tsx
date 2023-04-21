@@ -26,6 +26,15 @@ const Markdown: React.FC<{ md: string}> = (props: { md: string, bannerClassName?
     })
   }, [])
 
+  useEffect(() => {
+    // handle markNav color
+    const aside = document.querySelector('.m-common-banner-wrap aside')
+    const color = getComputedStyle(aside!).backgroundColor
+    const style = document.createElement('style')
+    style.innerHTML = `:root { --color-primary: ${color} }`
+    document.head.append(style)
+  }, [props])
+
   return (
     <div className="markdown-wrap md:flex">
       <div className="markdown-body w-full">
