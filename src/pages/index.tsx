@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, HeadFC, PageProps } from "gatsby"
-import Layout from "../components/Layout"
+import Layout, { CommonHead } from "../components/Layout"
 import { Link } from "gatsby"
 import Banner from "../components/Banner/common"
 
@@ -71,4 +71,8 @@ const IndexPage: React.FC<PageProps<QueryProps>> = ({ data }) => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => (
+  <>
+    <title>Home Page</title>
+    <CommonHead />
+  </>)

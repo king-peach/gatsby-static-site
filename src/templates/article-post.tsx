@@ -1,6 +1,6 @@
 import { graphql, Link, HeadFC, PageProps } from 'gatsby'
 import React, { useState, useEffect } from 'react'
-import Layout from '../components/Layout'
+import Layout, { CommonHead } from '../components/Layout'
 import LeftIcon from '../images/icon/arrow-left.svg'
 import RightIcon from '../images/icon/arrow-right.svg'
 import Markdown from '../components/Markdown'
@@ -103,4 +103,9 @@ const AriclePage: React.FC<PageProps<Queries.StrapiArticleQuery, PageContext<Que
 
 export default AriclePage
 
-export const Head: HeadFC = () => <title>article detail</title>
+export const Head: HeadFC = () => (
+  <>
+    <CommonHead />
+    <title>article detail</title>
+  </>
+)

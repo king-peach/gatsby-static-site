@@ -2,7 +2,7 @@ import { graphql, HeadFC, Link, PageProps } from 'gatsby'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import Layout from '../components/Layout'
+import Layout, { CommonHead } from '../components/Layout'
 
 export const query = graphql`
   query CategoryData {
@@ -117,6 +117,7 @@ export default Category
 
 export const Head: HeadFC = () => (
   <>
+    <CommonHead />
     <title>分类</title>
     <script src="/tagcanvas.min.js"></script>
   </>

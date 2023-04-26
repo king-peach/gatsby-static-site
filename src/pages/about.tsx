@@ -1,10 +1,11 @@
 import { graphql, PageProps } from 'gatsby'
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout, { CommonHead } from '../components/Layout'
 import ReactMarkdown from 'react-markdown'
 import Banner from '../components/Banner/common'
 import rehypeRaw from 'rehype-raw'
 import RemarkGfm from 'remark-gfm'
+import { HeadFC } from 'gatsby'
 
 export const query = graphql`
   query strapiPersonal {
@@ -39,3 +40,10 @@ const About: React.FC<PageProps<QueryProps>> = ({ data }) => {
 }
 
 export default About
+
+export const Head: HeadFC = () => (
+  <>
+    <title>About Me</title>
+    <CommonHead />
+  </>
+)
