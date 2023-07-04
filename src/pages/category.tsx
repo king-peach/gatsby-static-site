@@ -76,7 +76,7 @@ const Category: React.FC<PageProps<QueryProps>> = ({ data }) => {
     <Layout>
       <section className="bg-purple-900 w-full">
         <div className="tag-canvas h-72 pt-10" style={canvasWrapStyle}>
-          <canvas className="h-full mx-auto lg:w-1/3" id="tag-canvas">
+          <canvas className="h-full mx-auto w-auto" id="tag-canvas">
             <p>Anything in here will be replaced on browsers that support the canvas element</p>
           </canvas>
         </div>

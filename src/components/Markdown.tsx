@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import 'github-markdown-css/github-markdown.css'
 import ReactMarkdown from 'react-markdown'
 import RemarkGfm from 'remark-gfm' // fixed react-markdown can't render table、footer、strikethrough……
 import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
+import 'github-markdown-css/github-markdown.css'
 import '../styles/markdown.scss'
 import rehypeRaw from 'rehype-raw'
 
